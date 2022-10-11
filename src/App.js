@@ -7,10 +7,11 @@ import LogInSignUp from './components/LogInSignUp';
 import TitleText from './components/TitleText';
 import Button from './components/Button';
 import CharacterList from './components/CharacterList';
+import CreateCharacter from './components/CreateCharacter';
 import config from './config';
 
 import 'nes.css/css/nes.min.css';
-import CreateCharacter from './components/CreateCharacter';
+import './style.css';
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
