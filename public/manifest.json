@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Online Arena App",
+  "name": "Make your champions battle for their lives!",
   "icons": [
     {
       "src": "favicon.ico",
