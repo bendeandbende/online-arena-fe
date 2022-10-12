@@ -70,15 +70,13 @@ const CreateCharacter = () => {
 
   return (
     <div
-      className="nes-container is-dark"
       style={{
-        borderColor: '#212529',
+        padding: '10%',
       }}
     >
       <div
         style={{
-          backgroundColor: '#212529',
-          padding: '1rem',
+          padding: '1.5%',
         }}
         className="nes-field"
       >

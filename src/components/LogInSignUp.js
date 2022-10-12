@@ -42,7 +42,12 @@ const LoginSignUp = ({ setCookie, handleLogin }) => {
   };
 
   return (
-    <div className="nes-container is-dark">
+    <div
+      className="nes-container is-dark"
+      style={{
+        padding: '5%',
+      }}
+    >
       <div
         style={{
           margin: '0 auto',

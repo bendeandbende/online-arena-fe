@@ -109,10 +109,7 @@ function App() {
           )}
 
           {summary && (
-            <div
-              className="nes-container is-dark"
-              style={{ borderColor: '#212529' }}
-            >
+            <div style={{ padding: '2.5%' }}>
               {roundIndex === 0 && <TitleText titleText={summary.prep} />}
               <BattleText rounds={summary.rounds} roundIndex={roundIndex} />
               {roundIndex + 1 === summary.rounds.length && (
