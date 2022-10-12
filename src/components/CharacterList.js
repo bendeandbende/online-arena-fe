@@ -35,7 +35,12 @@ const CharacterList = ({
         <label htmlFor="dark_select" style={{ color: '#fff' }}>
           Select your champion
         </label>
-        <div className="nes-select is-dark">
+        <div
+          className="nes-select is-dark"
+          style={{
+            maxWidth: '60%',
+          }}
+        >
           <select
             onChange={handleSelect}
             required

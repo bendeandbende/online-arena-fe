@@ -65,7 +65,7 @@ function App() {
   };
 
   return (
-    <div className="nes-container is-dark" style={{ margin: '20%' }}>
+    <div className="nes-container is-dark main-container">
       {!loggedIn && (
         <LogInSignUp setCookie={setCookie} handleLogin={handleLogin} />
       )}
@@ -80,7 +80,10 @@ function App() {
       {!wantToCreateChar ? (
         <>
           {selectedChar && (
-            <div className="nes-container is-centered is-dark">
+            <div
+              className="nes-container is-centered is-dark"
+              style={{ borderColor: '#212529' }}
+            >
               {selectedChar && !summary && (
                 <p>Get ready to fight {selectedChar.firstName}!</p>
               )}
@@ -106,8 +109,11 @@ function App() {
           )}
 
           {summary && (
-            <div className="nes-container is-dark">
-              <TitleText titleText={summary.prep} />
+            <div
+              className="nes-container is-dark"
+              style={{ borderColor: '#212529' }}
+            >
+              {roundIndex === 0 && <TitleText titleText={summary.prep} />}
               <BattleText rounds={summary.rounds} roundIndex={roundIndex} />
               {roundIndex + 1 === summary.rounds.length && (
                 <TitleText titleText={summary.end} />

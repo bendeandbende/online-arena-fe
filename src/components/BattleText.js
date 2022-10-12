@@ -1,22 +1,26 @@
 const BattleText = ({ rounds, roundIndex }) => {
-  const round = rounds[roundIndex].split('\n').map((line, i) => {
-    const key = `battleTextLine${i}`;
+  const title = rounds[roundIndex].split('\n')[0];
 
-    if (i === 0) {
-      return (
-        <p key={key} className="title">
-          {line}
-        </p>
-      );
-    }
-    if (line === '') {
-      return <p key={key}></p>;
-    }
-    return <li key={key}>{line}</li>;
-  });
+  const round = rounds[roundIndex]
+    .split('\n')
+    .slice(1)
+    .map((line, i) => {
+      const key = `battleTextLine${i}`;
+
+      if (line === '') {
+        return <p key={key}></p>;
+      }
+
+      return <li key={key}>• {line}</li>;
+    });
 
   return (
-    <div className="nes-container is-dark is-rounded with-title">{round}</div>
+    <div className="nes-container is-dark is-rounded with-title">
+      <p className="title">{title}</p>
+      <ul className="nes-list" style={{ marginLeft: '-7.5%' }}>
+        {round}
+      </ul>
+    </div>
   );
 };
 

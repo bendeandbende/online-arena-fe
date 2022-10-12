@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Button from './Button';
-import config from '../config'
+import config from '../config';
 
 const CreateCharacter = () => {
   const [firstName, setFirstName] = useState('');
@@ -69,9 +69,17 @@ const CreateCharacter = () => {
   };
 
   return (
-    <div className="nes-container is-dark">
+    <div
+      className="nes-container is-dark"
+      style={{
+        borderColor: '#212529',
+      }}
+    >
       <div
-        style={{ backgroundColor: '#212529', padding: '1rem' }}
+        style={{
+          backgroundColor: '#212529',
+          padding: '1rem',
+        }}
         className="nes-field"
       >
         <label style={{ color: '#fff' }} htmlFor="name_field">
@@ -115,7 +123,6 @@ const CreateCharacter = () => {
             <div className="nes-select is-dark">
               <select
                 ref={weaponRef}
-                // onChange={(e) => setWeapon(e.target.value)}
                 required
                 id="default_select"
                 defaultValue="Select..."
