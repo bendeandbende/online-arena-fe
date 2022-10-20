@@ -5,9 +5,11 @@ import axios from 'axios';
 import BattleText from './components/BattleText';
 import LogInSignUp from './components/LogInSignUp';
 import TitleText from './components/TitleText';
-import Button from './components/Button';
+import Button from './components/UI/Button';
 import CharacterList from './components/CharacterList';
 import CreateCharacter from './components/CreateCharacter';
+import Spinner from './components/UI/Spinner';
+
 import config from './config';
 
 import 'nes.css/css/nes.min.css';
@@ -15,6 +17,7 @@ import './style.css';
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
+  const [isLoading, setIsLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState('');
   const [selectedChar, setSelectedChar] = useState('');
@@ -25,6 +28,7 @@ function App() {
   const handleLogin = (user) => {
     setUser(user);
     setLoggedIn(true);
+    setIsLoading(false);
   };
 
   const logOut = () => {
@@ -47,6 +51,8 @@ function App() {
           handleLogin(res.data.data.data);
         }
       });
+    } else {
+      setIsLoading(false);
     }
   }, [cookies.token]);
 
@@ -66,16 +72,19 @@ function App() {
 
   return (
     <div className="nes-container is-dark main-container">
-      {!loggedIn && (
+      {isLoading && <Spinner />}
+      {!loggedIn && !isLoading && (
         <LogInSignUp setCookie={setCookie} handleLogin={handleLogin} />
       )}
-      {loggedIn && (!summary || roundIndex + 1 === summary.rounds.length) && (
-        <CharacterList
-          characters={user.characters}
-          selectCharacter={setSelectedChar}
-          setWantToCreateChar={setWantToCreateChar}
-        />
-      )}
+      {loggedIn &&
+        !isLoading &&
+        (!summary || roundIndex + 1 === summary.rounds.length) && (
+          <CharacterList
+            characters={user.characters}
+            selectCharacter={setSelectedChar}
+            setWantToCreateChar={setWantToCreateChar}
+          />
+        )}
 
       {!wantToCreateChar ? (
         <>

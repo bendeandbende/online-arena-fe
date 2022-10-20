@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import Button from './Button';
+import Button from './UI/Button';
 import config from '../config';
 
 const CreateCharacter = () => {
