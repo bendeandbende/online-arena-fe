@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Button from './UI/Button';
 import config from '../config';
+import { toast } from 'react-toastify';
 
 const LoginSignUp = ({ setCookie, handleLogin }) => {
   const [name, setName] = useState('');
@@ -19,6 +20,9 @@ const LoginSignUp = ({ setCookie, handleLogin }) => {
             'Authorization'
           ] = `Bearer ${data.token}`;
           handleLogin(data.data.user);
+        })
+        .catch((err) => {
+          toast('Incorrect name of password');
         });
     } else if (loginOrSignup === 'signup') {
       axios
@@ -33,6 +37,13 @@ const LoginSignUp = ({ setCookie, handleLogin }) => {
             'Authorization'
           ] = `Bearer ${data.token}`;
           handleLogin(data.data.user);
+        })
+        .catch((err) => {
+          if (password !== passwordConfirm)
+            return toast('Passwords are not the same.');
+          toast(
+            'A user already exists with that name. Please choose another one'
+          );
         });
     }
   };
